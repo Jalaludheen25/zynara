@@ -114,7 +114,7 @@ export function JourneyRoute({ eyebrow, title, intro, steps }: Props) {
       id="journey"
       ref={sectionRef}
       data-theme="dark"
-      className="relative isolate scroll-mt-20 overflow-hidden bg-ink py-28 lg:flex lg:h-[100svh] lg:flex-col lg:justify-center lg:py-0"
+      className="relative isolate overflow-hidden bg-ink py-28 lg:flex lg:h-[100svh] lg:flex-col lg:justify-center lg:py-0"
     >
       <div
         aria-hidden="true"

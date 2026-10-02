@@ -1,12 +1,15 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
 import { company, nav } from '@/content/site'
 import { Logo } from '@/components/brand/Logo'
 import { TransitionLink } from '@/components/ui/TransitionLink'
 import { Button, RollText } from '@/components/ui/Button'
-import { MobileMenu } from './MobileMenu'
+
+// Loaded on demand: keeps the menu (and Framer Motion) out of the initial bundle.
+const MobileMenu = dynamic(() => import('./MobileMenu').then((mod) => mod.MobileMenu), { ssr: false })
 
 type Theme = 'dark' | 'light'
 
@@ -21,6 +24,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [menuLoaded, setMenuLoaded] = useState(false)
 
   useEffect(() => {
     const header = headerRef.current
@@ -116,7 +120,12 @@ export function Header() {
             className="relative z-10 -mr-2 flex h-11 items-center gap-3 px-2 md:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            onClick={() => setMenuOpen((open) => !open)}
+            onPointerDown={() => setMenuLoaded(true)}
+            onFocus={() => setMenuLoaded(true)}
+            onClick={() => {
+              setMenuLoaded(true)
+              setMenuOpen((open) => !open)
+            }}
           >
             <span className="mono-label">{menuOpen ? 'Close' : 'Menu'}</span>
             <span className="relative block h-3 w-6" aria-hidden="true">
@@ -130,7 +139,7 @@ export function Header() {
           </button>
         </div>
       </header>
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      {menuLoaded && <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />}
     </>
   )
 }
