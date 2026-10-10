@@ -97,7 +97,7 @@ export default function AboutPage() {
             </div>
             <h2
               data-reveal="words-scrub"
-              className="font-display text-[clamp(1.9rem,4vw,4.2rem)] leading-[1.08] font-medium tracking-[-0.045em] text-ink lg:col-span-9"
+              className="font-display text-[clamp(1.6rem,3vw,3.2rem)] leading-[1.08] font-medium tracking-[-0.045em] text-ink lg:col-span-9"
             >
               {mission.title}
             </h2>
@@ -121,7 +121,7 @@ export default function AboutPage() {
               <span className="block">{origin.titleLines[0]}</span>
               <span className="block">{withAccent(origin.titleLines[1], 'Grounded in the region.')}</span>
             </h2>
-            <p data-reveal="fade" className="mt-8 max-w-lg text-[clamp(1.15rem,1.6vw,1.45rem)] leading-relaxed text-fog">
+            <p data-reveal="fade" className="mt-8 max-w-lg text-[clamp(1.05rem,1.3vw,1.25rem)] leading-relaxed text-fog">
               {origin.copy}
             </p>
             <ul data-reveal="stagger" className="mt-12 max-w-lg border-b border-white/10">

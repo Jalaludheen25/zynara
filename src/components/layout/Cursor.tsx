@@ -5,11 +5,12 @@ import { usePathname } from 'next/navigation'
 import { gsap } from '@/lib/gsap'
 import { hasFinePointer, prefersReducedMotion } from '@/lib/env'
 
-type CursorState = 'default' | 'hover' | 'label'
+type CursorState = 'default' | 'hover' | 'nav' | 'label'
 
 /**
- * Desktop-only cursor: an exact dot plus a trailing ring that grows over
- * interactive elements. Elements with data-cursor-label="View" show a label.
+ * Desktop-only cursor: an exact dot plus a trailing ring that opens up over
+ * interactive elements. Over the header and menu only the dot remains, so nav
+ * items are never covered. Elements with data-cursor-label="View" show a label.
  */
 export function Cursor() {
   const [enabled, setEnabled] = useState(false)
@@ -59,7 +60,9 @@ export function Cursor() {
       root.dataset.visible = field ? 'false' : 'true'
 
       const labelled = target.closest<HTMLElement>('[data-cursor-label]')
-      if (labelled) {
+      if (target.closest('.site-header, #mobile-menu')) {
+        setState('nav')
+      } else if (labelled) {
         if (labelRef.current) labelRef.current.textContent = labelled.dataset.cursorLabel ?? ''
         setState('label')
       } else if (target.closest('a, button, [role="button"], label, summary, [data-cursor]')) {

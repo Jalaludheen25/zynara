@@ -43,7 +43,7 @@ export default function VaqtoPage() {
               data-reveal="lines"
               data-intro
               data-delay="0.2"
-              className="mt-7 font-display text-[clamp(2.35rem,5.3vw,6.25rem)] leading-[0.98] font-medium tracking-[-0.05em] text-white"
+              className="mt-7 font-display text-[clamp(2.1rem,3.9vw,4.5rem)] leading-[0.98] font-medium tracking-[-0.05em] text-white"
             >
               <span className="block">{hero.titleLines[0]}</span>
               <span className="block">{withAccent(hero.titleLines[1], 'your car.')}</span>
@@ -112,7 +112,7 @@ export default function VaqtoPage() {
                   <span className="shrink-0 font-mono text-xs text-indigo">0{i + 1}</span>
                   <p
                     data-reveal="words-scrub"
-                    className="font-display text-[clamp(1.9rem,5vw,5.2rem)] leading-[1.04] font-medium tracking-[-0.05em] text-ink"
+                    className="font-display text-[clamp(1.6rem,3.5vw,3.6rem)] leading-[1.04] font-medium tracking-[-0.05em] text-ink"
                   >
                     {question}
                   </p>
@@ -121,7 +121,7 @@ export default function VaqtoPage() {
             </ul>
             <div data-reveal="fade" className="mt-16 flex gap-5 border-t border-ink/10 pt-10 lg:mt-24 lg:gap-8 lg:pl-[calc(0.75rem+2rem)]">
               <span aria-hidden="true" className="bg-brand mt-2 block h-14 w-1 shrink-0 rounded-full" />
-              <p className="max-w-xl text-[clamp(1.2rem,1.8vw,1.6rem)] leading-snug tracking-[-0.02em] text-ink">{problem.answer}</p>
+              <p className="max-w-xl text-[clamp(1.1rem,1.5vw,1.35rem)] leading-snug tracking-[-0.02em] text-ink">{problem.answer}</p>
             </div>
           </div>
         </div>
@@ -175,7 +175,7 @@ export default function VaqtoPage() {
         <Marquee
           items={journeyWords}
           duration={30}
-          className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 translate-y-[30%] font-display text-[clamp(6rem,18vw,18rem)] leading-none font-semibold tracking-[-0.06em] whitespace-nowrap text-white/[0.08]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 translate-y-[30%] font-display text-[clamp(4rem,12vw,12rem)] leading-none font-semibold tracking-[-0.06em] whitespace-nowrap text-white/[0.08]"
         />
         <div className="shell flex flex-col items-center text-center">
           <Eyebrow tone="plain" className="[&::before]:[background:white]">

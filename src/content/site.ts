@@ -1,5 +1,7 @@
 // All website copy, taken verbatim from the original Zynara Tech website.
 // Keep this file the single source of truth for content.
+// Exception: the "Plan" and "Book" journey steps were shortened on request so
+// all four steps read at the same length.
 
 export const company = {
   name: 'Zynara Tech',
@@ -234,11 +236,11 @@ export const vaqto = {
       },
       {
         title: 'Plan',
-        copy: 'Consider location, route and available timing guidance before you go.',
+        copy: 'Consider location, route and timing guidance before you go.',
       },
       {
         title: 'Book',
-        copy: 'Reserve a service at participating locations where booking is available.',
+        copy: 'Reserve a service at participating locations where available.',
       },
     ],
   },

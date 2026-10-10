@@ -65,7 +65,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                       <TransitionLink
                         href={link.href}
                         onClick={onClose}
-                        className="flex items-baseline gap-4 py-1 font-display text-[clamp(2.75rem,13vw,4.5rem)] leading-[1.05] font-medium tracking-[-0.05em]"
+                        className="flex items-baseline gap-4 py-1 font-display text-[clamp(2.2rem,10vw,3.4rem)] leading-[1.05] font-medium tracking-[-0.05em]"
                       >
                         <span className="font-mono text-xs tracking-[0.2em] text-cyan">0{index + 1}</span>
                         {link.label}

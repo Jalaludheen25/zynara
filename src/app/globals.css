@@ -32,19 +32,19 @@
   --font-serif: var(--font-instrument), Georgia, serif;
 
   /* Fluid type scale */
-  --text-mega: clamp(2.55rem, 10.2vw, 11.25rem);
+  --text-mega: clamp(2.4rem, 7vw, 7rem);
   --text-mega--line-height: 0.93;
   --text-mega--letter-spacing: -0.055em;
-  --text-display: clamp(2.6rem, 6.2vw + 1rem, 7.75rem);
+  --text-display: clamp(2.25rem, 4.4vw + 0.75rem, 5.5rem);
   --text-display--line-height: 0.97;
   --text-display--letter-spacing: -0.05em;
-  --text-h2: clamp(2rem, 4.6vw, 4.85rem);
+  --text-h2: clamp(1.75rem, 3.4vw, 3.6rem);
   --text-h2--line-height: 1.03;
   --text-h2--letter-spacing: -0.045em;
-  --text-h3: clamp(1.35rem, 2vw, 1.95rem);
+  --text-h3: clamp(1.25rem, 1.6vw, 1.6rem);
   --text-h3--line-height: 1.18;
   --text-h3--letter-spacing: -0.03em;
-  --text-lead: clamp(1.05rem, 1.3vw, 1.28rem);
+  --text-lead: clamp(1rem, 1.15vw, 1.18rem);
   --text-lead--line-height: 1.62;
 
   --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
@@ -398,6 +398,12 @@
   }
 
   /* --------------------------------- Cursor ----------------------------------- */
+  /*
+    A brand-gradient dot with a trailing gradient ring. Each carries a light and
+    a dark edge so it reads on white and on ink alike. Hover states only draw an
+    outline (never a filled disc), and over the header/menu the ring tucks away
+    so navigation items stay fully legible.
+  */
 
   .cursor {
     position: fixed;
@@ -423,67 +429,122 @@
   }
 
   .cursor-dot {
-    width: 6px;
-    height: 6px;
-    margin: -3px 0 0 -3px;
-    background: #fff;
-    mix-blend-mode: difference;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    background: linear-gradient(135deg, #6a5cff, var(--color-cyan));
+    box-shadow:
+      0 0 0 1.5px rgb(255 255 255 / 0.95),
+      0 0 0 2.5px rgb(8 13 27 / 0.22),
+      0 2px 10px rgb(79 70 229 / 0.45);
+    transition:
+      width 0.45s var(--ease-expo),
+      height 0.45s var(--ease-expo),
+      margin 0.45s var(--ease-expo),
+      opacity 0.3s ease;
   }
 
   .cursor-ring {
     display: grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
-    margin: -20px 0 0 -20px;
-    border: 1px solid rgb(255 255 255 / 0.55);
-    mix-blend-mode: difference;
+    width: 38px;
+    height: 38px;
+    margin: -19px 0 0 -19px;
     transition:
-      width 0.5s var(--ease-expo),
-      height 0.5s var(--ease-expo),
-      margin 0.5s var(--ease-expo),
+      width 0.6s var(--ease-expo),
+      height 0.6s var(--ease-expo),
+      margin 0.6s var(--ease-expo),
+      opacity 0.35s ease,
       background-color 0.4s ease,
-      border-color 0.4s ease;
+      box-shadow 0.4s ease;
   }
 
+  /* Gradient outline: the mask keeps only a 1.5px border of the gradient. */
+  .cursor-ring::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1.5px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #6a5cff, var(--color-cyan));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.85;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Soft light edge + glow so the outline separates from dark imagery too. */
+  .cursor-ring::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.22),
+      0 0 14px rgb(79 70 229 / 0.18);
+    transition: opacity 0.4s ease;
+  }
+
+  /* Links & buttons: the ring opens around the target and the centre stays clear. */
   .cursor[data-state='hover'] .cursor-ring {
-    width: 64px;
-    height: 64px;
-    margin: -32px 0 0 -32px;
-    background: #fff;
-    border-color: transparent;
+    width: 58px;
+    height: 58px;
+    margin: -29px 0 0 -29px;
+    background-color: rgb(106 92 255 / 0.06);
   }
 
+  .cursor[data-state='hover'] .cursor-ring::before {
+    opacity: 1;
+  }
+
+  /* A brighter light edge keeps the ring visible over gradient-filled buttons. */
+  .cursor[data-state='hover'] .cursor-ring::after {
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.6),
+      0 0 18px rgb(79 70 229 / 0.25);
+  }
+
+  /* The ring alone marks the target; the dot would sit on top of label text. */
   .cursor[data-state='hover'] .cursor-dot {
     opacity: 0;
   }
 
-  .cursor[data-state='label'] .cursor-ring {
-    width: 104px;
-    height: 104px;
-    margin: -52px 0 0 -52px;
-    border-color: transparent;
-    background: linear-gradient(135deg, var(--color-violet), var(--color-cyan));
-    mix-blend-mode: normal;
-  }
-
-  .cursor[data-state='label'] .cursor-dot,
-  .cursor[data-state='text'] .cursor-dot {
+  /* Header & menu: only a small dot remains, so nav items are never covered. */
+  .cursor[data-state='nav'] .cursor-ring {
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
     opacity: 0;
   }
 
-  .cursor[data-state='text'] .cursor-ring {
-    width: 3px;
-    height: 34px;
-    margin: -17px 0 0 -1.5px;
-    border-radius: 2px;
-    background: #fff;
-    border-color: transparent;
+  .cursor[data-state='nav'] .cursor-dot {
+    width: 5px;
+    height: 5px;
+    margin: -2.5px 0 0 -2.5px;
+  }
+
+  /* Media with a label (e.g. "View") */
+  .cursor[data-state='label'] .cursor-ring {
+    width: 88px;
+    height: 88px;
+    margin: -44px 0 0 -44px;
+    background-image: linear-gradient(135deg, var(--color-violet), var(--color-cyan));
+    box-shadow: 0 12px 30px -10px rgb(34 195 255 / 0.55);
+  }
+
+  .cursor[data-state='label'] .cursor-ring::before,
+  .cursor[data-state='label'] .cursor-ring::after,
+  .cursor[data-state='label'] .cursor-dot {
+    opacity: 0;
   }
 
   .cursor-label {
+    position: relative;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: #fff;

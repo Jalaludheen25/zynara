@@ -29,7 +29,7 @@ export function ContactCta() {
           <div data-reveal="fade" data-delay="0.1" className="flex flex-col items-start gap-8 lg:col-span-7 lg:items-end">
             <a
               href={`mailto:${company.email}`}
-              className="roll-trigger group inline-flex items-center gap-4 font-display text-[clamp(1.35rem,4.6vw,4.4rem)] leading-none font-medium tracking-[-0.045em]"
+              className="roll-trigger group inline-flex items-center gap-4 font-display text-[clamp(1.25rem,3vw,3rem)] leading-none font-medium tracking-[-0.045em]"
             >
               <RollText>{company.email}</RollText>
               <span className="grid size-[0.9em] shrink-0 place-items-center rounded-full bg-ink text-white transition-transform duration-700 ease-[var(--ease-expo)] group-hover:rotate-45">

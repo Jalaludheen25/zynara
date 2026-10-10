@@ -42,7 +42,7 @@ export default function ContactPage() {
             <div data-reveal="fade" data-intro data-delay="0.6" className="flex flex-col items-start gap-6 lg:col-span-7 lg:items-end">
               <a
                 href={`mailto:${company.email}`}
-                className="roll-trigger font-display text-[clamp(1.35rem,4.6vw,4.4rem)] leading-none font-medium tracking-[-0.045em]"
+                className="roll-trigger font-display text-[clamp(1.25rem,3vw,3rem)] leading-none font-medium tracking-[-0.045em]"
               >
                 <RollText>{company.email}</RollText>
               </a>
@@ -72,7 +72,7 @@ export default function ContactPage() {
                     >
                       <span>
                         <span className="block text-sm leading-snug text-muted">{channel.label}</span>
-                        <span className="mt-2 block font-display text-[1.3rem] font-medium tracking-[-0.03em] text-ink">
+                        <span className="mt-2 block font-display text-[1.15rem] font-medium tracking-[-0.03em] text-ink">
                           <RollText>{channel.value}</RollText>
                         </span>
                       </span>

@@ -47,7 +47,7 @@ export function NotFoundCode({ code }: { code: string }) {
   return (
     <h1
       ref={ref}
-      className="relative font-display text-[clamp(8rem,33vw,30rem)] leading-[0.82] font-semibold tracking-[-0.08em] select-none"
+      className="relative font-display text-[clamp(6rem,21vw,19rem)] leading-[0.82] font-semibold tracking-[-0.08em] select-none"
     >
       <span
         aria-hidden="true"

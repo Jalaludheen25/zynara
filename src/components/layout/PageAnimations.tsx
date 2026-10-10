@@ -23,7 +23,18 @@ import { onPageEnter } from '@/lib/page-events'
   uncovered rather than on scroll — used for hero content).
 */
 
-const START = 'top 88%'
+const START_RATIO = 0.88 // reveal when an element's top reaches 88% of the viewport
+
+/**
+ * Scroll position at which an element reveals. Elements so close to the end of
+ * the page that the usual point can never be scrolled to (e.g. the footer
+ * wordmark) reveal just before the bottom of the page instead.
+ */
+const revealStart = (el: HTMLElement) => () => {
+  const natural = el.getBoundingClientRect().top + window.scrollY - window.innerHeight * START_RATIO
+  const max = ScrollTrigger.maxScroll(window)
+  return natural >= max - 2 ? Math.max(0, max - 2) : natural
+}
 
 function buildReveal(el: HTMLElement): gsap.core.Animation | null {
   const type = el.dataset.reveal
@@ -146,7 +157,7 @@ export function PageAnimations() {
               anim.play()
               return
             }
-            ScrollTrigger.create({ trigger: el, start: START, once: true, onEnter: () => anim.play() })
+            ScrollTrigger.create({ trigger: el, start: revealStart(el), once: true, onEnter: () => anim.play() })
           })
           ScrollTrigger.sort()
           ScrollTrigger.refresh()

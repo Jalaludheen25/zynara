@@ -141,8 +141,8 @@ export function JourneyRoute({ eyebrow, title, intro, steps }: Props) {
         </div>
 
         {/* Desktop: horizontal route */}
-        <div className="relative mt-20 hidden lg:block" aria-hidden="true">
-          <div className="relative h-[200px]">
+        <div className="relative mt-14 hidden lg:block xl:mt-16" aria-hidden="true">
+          <div className="relative h-[160px] xl:h-[190px]">
             <svg viewBox="0 0 1200 200" preserveAspectRatio="none" fill="none" className="absolute inset-0 size-full overflow-visible">
               <defs>
                 <linearGradient id="journey-grad" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
@@ -186,7 +186,7 @@ export function JourneyRoute({ eyebrow, title, intro, steps }: Props) {
         </div>
 
         {/* Steps */}
-        <ol className="relative mt-16 grid gap-0 lg:mt-14 lg:grid-cols-4 lg:gap-0">
+        <ol className="relative mt-16 grid gap-0 lg:mt-10 lg:grid-cols-4 lg:items-start lg:gap-0">
           <span aria-hidden="true" className="absolute top-2 bottom-2 left-[11px] w-px bg-white/10 lg:hidden">
             <span ref={railRef} className="bg-brand absolute inset-0 origin-top" />
           </span>
@@ -194,7 +194,7 @@ export function JourneyRoute({ eyebrow, title, intro, steps }: Props) {
             <li
               key={step.title}
               data-step
-              className="relative pb-12 pl-12 transition-opacity duration-700 last:pb-0 lg:px-[1.6vw] lg:pb-0 lg:text-center"
+              className="relative pb-12 pl-12 transition-opacity duration-700 last:pb-0 lg:px-[1.2vw] lg:pb-0 lg:text-center"
               style={{ opacity: active >= i ? 1 : 0.32 }}
             >
               <span
@@ -204,10 +204,11 @@ export function JourneyRoute({ eyebrow, title, intro, steps }: Props) {
                 <span className={`size-1.5 rounded-full ${active >= i ? 'bg-white' : 'bg-white/30'}`} />
               </span>
               <span className="font-mono text-xs tracking-[0.2em] text-glow">0{i + 1}</span>
-              <h3 className="mt-3 font-display text-[clamp(1.7rem,2.6vw,2.6rem)] font-medium tracking-[-0.045em] text-white">
+              <h3 className="mt-3 font-display text-[clamp(1.45rem,1.9vw,1.9rem)] font-medium tracking-[-0.04em] text-white">
                 {step.title}
               </h3>
-              <p className="mt-3 leading-relaxed text-fog lg:mx-auto lg:max-w-[16rem]">{step.copy}</p>
+              {/* A shared minimum height (3 lines on narrow desktops, 2 from xl) keeps all four steps aligned */}
+              <p className="mt-3 text-[0.95rem] leading-relaxed text-fog lg:mx-auto lg:min-h-[4.875em] lg:max-w-[17.5rem] xl:min-h-[3.25em]">{step.copy}</p>
             </li>
           ))}
         </ol>

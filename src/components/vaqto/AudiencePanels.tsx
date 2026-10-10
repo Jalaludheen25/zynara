@@ -40,7 +40,7 @@ export function AudiencePanels({ items }: { items: readonly Item[] }) {
               <span className="font-mono text-xs text-slate">0{i + 1}</span>
             </div>
             <h3
-              className={`max-w-[18ch] font-display text-[clamp(1.6rem,2.6vw,2.6rem)] leading-[1.1] font-medium tracking-[-0.04em] text-white transition-[opacity,transform] duration-700 ease-[var(--ease-expo)] lg:max-w-[16ch] ${
+              className={`max-w-[18ch] font-display text-[clamp(1.35rem,1.9vw,1.9rem)] leading-[1.1] font-medium tracking-[-0.04em] text-white transition-[opacity,transform] duration-700 ease-[var(--ease-expo)] lg:max-w-[16ch] ${
                 isActive ? 'lg:translate-y-0 lg:opacity-100' : 'lg:translate-y-3 lg:opacity-60'
               }`}
             >

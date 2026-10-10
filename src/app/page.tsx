@@ -72,7 +72,7 @@ export default function HomePage() {
           <div className="lg:col-span-9">
             <h2
               data-reveal="words-scrub"
-              className="font-display text-[clamp(2.2rem,5.6vw,6rem)] leading-[1.02] font-medium tracking-[-0.05em] text-white"
+              className="font-display text-[clamp(1.85rem,4vw,4.25rem)] leading-[1.02] font-medium tracking-[-0.05em] text-white"
             >
               {purpose.title}
             </h2>
@@ -111,8 +111,8 @@ export default function HomePage() {
                   aria-hidden="true"
                   className="bg-brand absolute top-0 left-0 h-px w-0 transition-[width] duration-1000 ease-[var(--ease-expo)] group-hover:w-full"
                 />
-                <div data-reveal="fade" className="grid grid-cols-[3.5rem_1fr] gap-y-4 sm:grid-cols-[5.5rem_1fr]">
-                  <span className="font-display text-[2.4rem] leading-none font-medium tracking-[-0.06em] text-ink/15 transition-colors duration-700 group-hover:text-indigo sm:text-[3.2rem]">
+                <div data-reveal="fade" className="grid grid-cols-[3rem_1fr] gap-y-4 sm:grid-cols-[4.5rem_1fr]">
+                  <span className="font-display text-[2rem] leading-none font-medium tracking-[-0.06em] text-ink/15 transition-colors duration-700 group-hover:text-indigo sm:text-[2.5rem]">
                     0{i + 1}
                   </span>
                   <h3 className="self-end text-h3 text-ink transition-transform duration-700 ease-[var(--ease-expo)] group-hover:translate-x-2">

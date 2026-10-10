@@ -29,7 +29,7 @@ export function Footer() {
             <p className="mt-6 max-w-sm text-[1.05rem] leading-relaxed text-fog">{company.tagline}</p>
             <a
               href={`mailto:${company.email}`}
-              className="roll-trigger mt-10 inline-flex items-center gap-3 font-display text-[clamp(1.4rem,2.6vw,2.2rem)] font-medium tracking-[-0.04em]"
+              className="roll-trigger mt-10 inline-flex items-center gap-3 font-display text-[clamp(1.2rem,1.9vw,1.7rem)] font-medium tracking-[-0.04em]"
             >
               <RollText>{company.email}</RollText>
               <ArrowUpRight className="size-5 text-cyan" />
@@ -69,7 +69,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-20 flex flex-col gap-5 border-t border-white/10 py-7 text-sm text-slate sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-20 flex flex-col gap-5 border-t border-white/10 pt-7 pb-10 text-sm text-slate sm:flex-row sm:items-center sm:justify-between lg:pb-12">
           <p>© {year} Zynara Tech. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <p>{company.locationFull}</p>
@@ -77,16 +77,6 @@ export function Footer() {
             <BackToTop />
           </div>
         </div>
-      </div>
-
-      {/* Oversized wordmark */}
-      <div data-reveal="image" className="relative select-none" aria-hidden="true">
-        <p
-          data-reveal-inner
-          className="text-gradient origin-bottom text-center font-display text-[29vw] leading-[0.9] font-semibold tracking-[-0.075em] whitespace-nowrap"
-        >
-          Zynara
-        </p>
       </div>
     </footer>
   )

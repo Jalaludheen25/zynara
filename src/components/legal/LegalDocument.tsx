@@ -58,7 +58,7 @@ export function LegalDocument({ doc, related }: { doc: LegalDoc; related: Relate
             {sections.map((section, i) => (
               <section key={section.id} id={section.id} className="scroll-mt-28 border-b border-ink/10 pb-14 not-first:pt-14 last:border-0">
                 <div data-reveal="fade" className="grid gap-4 sm:grid-cols-[4.5rem_1fr]">
-                  <span className="font-display text-[2rem] leading-none font-medium tracking-[-0.06em] text-ink/15">
+                  <span className="font-display text-[1.6rem] leading-none font-medium tracking-[-0.06em] text-ink/15">
                     0{i + 1}
                   </span>
                   <div>

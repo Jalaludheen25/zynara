@@ -98,7 +98,7 @@ export function ContactForm() {
               <span className="bg-brand grid size-14 place-items-center rounded-full text-white">
                 <Check className="size-6" />
               </span>
-              <p className="mt-8 font-display text-[clamp(1.6rem,2.6vw,2.4rem)] leading-tight font-medium tracking-[-0.04em] text-ink">
+              <p className="mt-8 font-display text-[clamp(1.4rem,2vw,1.9rem)] leading-tight font-medium tracking-[-0.04em] text-ink">
                 Your email app should now be open with your enquiry ready to send.
               </p>
               <p className="mt-5 text-muted">

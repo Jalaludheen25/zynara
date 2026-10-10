@@ -109,7 +109,7 @@ export function ValuesRail({ eyebrow, title, intro, items }: Props) {
             >
               <div data-panel-part className="flex items-start justify-between">
                 <ValueGlyph index={i} />
-                <span className="font-display text-[clamp(3.5rem,6vw,6rem)] leading-none font-medium tracking-[-0.06em] text-white/[0.07] transition-colors duration-700 group-hover:text-white/20">
+                <span className="font-display text-[clamp(2.5rem,4vw,4rem)] leading-none font-medium tracking-[-0.06em] text-white/[0.07] transition-colors duration-700 group-hover:text-white/20">
                   0{i + 1}
                 </span>
               </div>
