@@ -6,7 +6,7 @@ the Zynara route mark and its indigo → cyan palette.
 
 ## Stack
 
-- **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript**
+- **Next.js 16** (App Router, webpack) · **React 19** · **TypeScript**
 - **Tailwind CSS v4**: brand tokens and fluid type live in `src/app/globals.css`
 - **GSAP 3** + ScrollTrigger + SplitText: scroll and text animation
 - **Lenis**: smooth scrolling, driven by the GSAP ticker
@@ -22,6 +22,11 @@ npm run build && npm start
 npm run lint             # type-check
 npm run optimize-images  # regenerate web images from /assets-source
 ```
+
+`dev` and `build` use webpack (`--webpack`) rather than Turbopack. Turbopack runs PostCSS
+(Tailwind) in a separate pool of Node processes, and that pool failed to start on Hostinger's
+build servers. Webpack runs the same `postcss.config.mjs` inside its own compiler, and the
+pages render identically.
 
 Set `NEXT_PUBLIC_SITE_URL` for canonical URLs, the sitemap and Open Graph (default `https://zynaratech.co`).
 
